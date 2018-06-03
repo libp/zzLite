@@ -1,0 +1,18 @@
+<import src="../../wxParse/wxParse.wxml"/>
+
+<!--index.wxml-->
+<view class="container">
+  
+  <view class="title">
+    <text >{{title}}</text>
+  </view>
+  <view class="author">
+    <text>{{author}}</text>
+  </view>
+  <view class="content">
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  </view>
+  <view class="about">
+   <navigator url='/pages/about/about'>了解更多</navigator>
+  </view>
+</view>
