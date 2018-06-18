@@ -7,7 +7,7 @@ Page({
   data: {
     title: '',
     author: '',
-    content: '加载中...'
+    content: '加载中...',
   },
   //事件处理函数
   bindViewTap: function() {
@@ -24,8 +24,11 @@ Page({
     if(res.id){
       that.getContentByID(res.id, that);
     }else{
+      wx.showLoading({
+        title: '加载中',
+      })
       wx.request({
-        url: 'https://www.nichuiniu.cn/v1/recommend',
+        url: 'https://www.nichuiniu.cn/v1/article/recommend',
         header: {
           'content-type': 'application/json',
           'dataType': 'json'
@@ -36,6 +39,10 @@ Page({
               title: res.data.title,
               author: res.data.author,
             }),
+            wx.setNavigationBarTitle({
+              title: '今日推荐 - 值得读读'
+            })
+            wx.hideLoading()
             that.setContentStorage(res)
         }
       })
@@ -46,13 +53,18 @@ Page({
     wx.showNavigationBarLoading();
     var that = this;
     wx.request({
-      url: 'https://www.nichuiniu.cn/v1/random', 
+      url: 'https://www.nichuiniu.cn/v1/article/random', 
       method: "GET",
       header: {
         'content-type': 'application/text',
         'dataType': 'json'
       },
       success: function (res) {
+        if (typeof res.data === 'string'){
+          console.log(typeof res.data),
+          wx.stopPullDownRefresh();
+          return false
+        }
         WxParse.wxParse('content', 'html', res.data.content, that),
         that.setData({
           title: res.data.title,
@@ -92,7 +104,7 @@ Page({
   },
   getContentByID: function (id,that){
     wx.request({
-      url: 'https://www.nichuiniu.cn/v1/articleID?id=' + id,
+      url: 'https://www.nichuiniu.cn/v1/article/articleID?id=' + id,
       header: {
         'content-type': 'application/json',
         'dataType': 'json'
@@ -108,14 +120,37 @@ Page({
     })
   },
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
     return {
       title: wx.getStorageSync('title'),
       path: '/pages/index/index' + '?id=' + wx.getStorageSync('id'),
     }
+  },
+  nextRandom: function (res) {
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 1
+    })
+    var that = this;
+    wx.request({
+      url: 'https://www.nichuiniu.cn/v1/article/random',
+      method: "GET",
+      header: {
+        'content-type': 'application/text',
+        'dataType': 'json'
+      },
+      success: function (res) {
+        if (typeof res.data === 'string') {
+          console.log(typeof res.data)
+          return false
+        }
+        WxParse.wxParse('content', 'html', res.data.content, that),
+          that.setData({
+            title: res.data.title,
+            author: res.data.author,
+          }),
+          wx.hideNavigationBarLoading();
+        that.setContentStorage(res);
+      }
+    })
   }
-  
 })

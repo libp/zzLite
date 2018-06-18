@@ -12,7 +12,11 @@
   <view class="content">
     <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
   </view>
+
+  <button open-type="share" size="default" type="primary" class="share_next"> 分享 </button>
+  <button bindtap="nextRandom" size="default" type="default" class="share_next"> 下一篇 </button>
+  
   <view class="about">
-   <navigator url='/pages/about/about'>了解更多</navigator>
+   <navigator url='/pages/about/about'>关于值得读读</navigator>
   </view>
 </view>

@@ -2,12 +2,11 @@
 <view class="about-p">值得读读，专注于文化生活</view>
 <view class="about-p">所荐文章，涵盖古今大家之作</view>
 <view class="about-p">相信时间是最好的过滤器</view>
-<view class="about-p">留下来的都是精华</view>
-<view class="about-p">拒绝一目十行</view>
-<view class="about-p">拒绝花销的样式</view>
-<view class="about-p">化繁为简</view>
-<view class="about-p">静下心来</view>
+<view class="about-p">拒绝一目十行，拒绝花销的样式</view>
+<view class="about-p">化繁为简，聚焦经典</view>
 <view class="about-p">享受纯粹的阅读时光</view>
+<view class='about-p'>如果你也有值得读读的文章，请点击联系我们，发送你喜欢的文章标题给我们</view>
+<view class='about-p'>采纳后将分享给1000位喜欢值得读读的朋友</view>
 <view class="about-p"><button open-type="contact">联系我们</button></view>
 </view>
 

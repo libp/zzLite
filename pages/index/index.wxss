@@ -29,3 +29,8 @@
   margin:0% 0% 40% 0%;
   border-bottom:1px solid  #cccccc;
 }
+.share_next{
+  float: left;
+  width: 90%;
+  margin:0% 0% 4% 0%;
+}
