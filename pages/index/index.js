@@ -71,6 +71,9 @@ Page({
           author: res.data.author,
         }),
         wx.hideNavigationBarLoading();
+        wx.setNavigationBarTitle({
+          title: '值得读读'
+        });
         // 停止下拉动作  
         wx.stopPullDownRefresh();
         that.setContentStorage(res);
@@ -144,11 +147,14 @@ Page({
           return false
         }
         WxParse.wxParse('content', 'html', res.data.content, that),
-          that.setData({
-            title: res.data.title,
-            author: res.data.author,
-          }),
-          wx.hideNavigationBarLoading();
+        that.setData({
+          title: res.data.title,
+          author: res.data.author,
+        }),
+        wx.hideNavigationBarLoading();
+        wx.setNavigationBarTitle({
+          title: '值得读读'
+        });
         that.setContentStorage(res);
       }
     })
