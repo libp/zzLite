@@ -32,4 +32,6 @@
 [zzLite](https://github.com/libp/zzLite)  
 [littleweb](https://github.com/libp/littleweb)  
 [zz](https://github.com/libp/zz)   
-[License MIT](https://github.com/tencent/wepy/blob/master/LICENSE)
+
+## License
+MIT
