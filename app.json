@@ -9,5 +9,6 @@
     "navigationBarTitleText": "值得读读",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
